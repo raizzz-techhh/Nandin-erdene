@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>Сумъяа ❤️ Нандин-Эрдэнэ</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:#070707;color:#fff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.12;
+      background-image:radial-gradient(#fff .7px,transparent .7px);background-size:22px 22px;
+    }
+    .bg{
+      position:fixed;inset:0;z-index:-2;
+      background:
+        radial-gradient(circle at 20% 15%,rgba(190,20,55,.22),transparent 30%),
+        radial-gradient(circle at 85% 75%,rgba(255,40,75,.13),transparent 30%),
+        #070707;
+    }
+    .orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.18;z-index:-1}
+    .orb.one{width:260px;height:260px;background:#b10f3c;left:-100px;top:25%}
+    .orb.two{width:220px;height:220px;background:#8f1537;right:-80px;top:55%}
+
+    .music{
+      position:fixed;right:18px;top:18px;z-index:50;
+      border:1px solid rgba(255,255,255,.16);background:rgba(15,15,15,.72);
+      backdrop-filter:blur(12px);color:#fff;border-radius:999px;padding:11px 15px;
+      cursor:pointer;font-size:14px;transition:.25s;
+    }
+    .music:hover{transform:translateY(-2px);border-color:rgba(255,90,120,.55)}
+
+    section{width:min(1000px,92%);margin:auto}
+    .hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:90px 0 55px}
+    .hero-inner{max-width:850px}
+    .eyebrow{
+      display:inline-flex;padding:8px 14px;border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;color:#cfcfcf;font-size:12px;letter-spacing:3px;text-transform:uppercase;
+      background:rgba(255,255,255,.035);margin-bottom:22px;
+    }
+    h1{
+      font-family:Georgia,serif;font-weight:400;font-size:clamp(54px,10vw,110px);
+      line-height:.92;letter-spacing:-5px;
+    }
+    h1 span{color:#ff466e}
+    .subtitle{margin:24px auto 30px;max-width:620px;color:#aaa;font-size:17px;line-height:1.7}
+    .date-pill{
+      display:inline-block;color:#ddd;border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;padding:11px 17px;background:rgba(255,255,255,.035)
+    }
+    .scroll{margin-top:55px;color:#666;font-size:12px;letter-spacing:3px;text-transform:uppercase}
+    .scroll:after{content:"↓";display:block;color:#ff466e;font-size:25px;margin-top:7px}
+
+    .title{font-family:Georgia,serif;font-size:clamp(34px,5vw,58px);font-weight:400;margin-bottom:13px}
+    .lead{color:#999;line-height:1.8;max-width:650px;margin-bottom:35px}
+
+    .memory-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .card{
+      background:#101010;border:1px solid rgba(255,255,255,.09);border-radius:25px;
+      overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.35)
+    }
+    .card img{display:block;width:100%;height:480px;object-fit:cover}
+    .card:nth-child(2) img{object-position:center}
+    .caption{padding:18px 20px;color:#bbb;line-height:1.6}
+    .caption b{color:#fff}
+
+    .counter{padding:120px 0}
+    .counter-box{
+      border:1px solid rgba(255,255,255,.09);background:linear-gradient(135deg,#101010,#0b0b0b);
+      border-radius:30px;padding:40px;text-align:center;
+    }
+    .days{font-size:clamp(50px,9vw,90px);font-weight:700;color:#ff466e;line-height:1}
+    .days-label{color:#aaa;margin-top:10px}
+
+    .letter{padding:30px 0 120px}
+    .letter-box{
+      position:relative;overflow:hidden;border-radius:30px;padding:45px;
+      background:linear-gradient(145deg,rgba(45,10,18,.9),rgba(13,13,13,.96));
+      border:1px solid rgba(255,75,110,.2);
+    }
+    .letter-box:after{
+      content:"♥";position:absolute;right:-15px;top:-30px;font-size:190px;color:rgba(255,55,95,.045);
+    }
+    .letter-box p{color:#cfcfcf;line-height:2;font-size:17px;max-width:720px;position:relative;z-index:1}
+    .signature{margin-top:25px;color:#ff6b8a;font-family:Georgia,serif;font-size:25px}
+
+    .secret-wrap{text-align:center;padding-bottom:120px}
+    .secret{
+      border:1px solid rgba(255,255,255,.12);background:#0e0e0e;color:white;
+      padding:15px 23px;border-radius:999px;cursor:pointer;font-size:15px;
+      transition:.25s
+    }
+    .secret:hover{background:#171717;transform:scale(1.03)}
+    .hidden-note{display:none;margin:25px auto 0;max-width:600px;color:#bbb;line-height:1.8}
+    .hidden-note.show{display:block;animation:fade .7s ease}
+
+    footer{text-align:center;color:#555;font-size:12px;padding:0 0 35px}
+    footer span{color:#ff466e}
+
+    .heart{position:fixed;bottom:-30px;z-index:10;pointer-events:none;color:#ff466e;
+      animation:floatUp linear forwards;opacity:.75}
+    @keyframes floatUp{
+      from{transform:translateY(0) scale(.8);opacity:0}
+      15%{opacity:.75}to{transform:translateY(-110vh) rotate(20deg) scale(1.2);opacity:0}
+    }
+    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    .player{
+      position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+      width:min(520px,calc(100% - 30px));display:none;z-index:60;
+      border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;
+      background:#111;box-shadow:0 15px 50px #000;
+    }
+    .player iframe{width:100%;height:80px;border:0;display:block}
+    .close-player{position:absolute;right:8px;top:8px;z-index:2;border:0;background:#0009;color:#fff;border-radius:50%;width:28px;height:28px;cursor:pointer}
+
+    @media(max-width:700px){
+      .memory-grid{grid-template-columns:1fr}
+      .card img{height:400px}
+      .letter-box{padding:30px 24px}
+      h1{letter-spacing:-3px}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div><div class="orb one"></div><div class="orb two"></div>
+
+  <button class="music" id="musicBtn">♪ Бидний дуу</button>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">made with love</div>
+        <h1>Сумъяа <span>♥</span><br>Нандин-Эрдэнэ</h1>
+        <p class="subtitle">
+          Зарим хүн амьдралд зүгээр л орж ирдэг.
+          Харин зарим хүн ирээд амьдралыг илүү гоё болгодог.
+          <br>Чи бол миний хувьд тэр хүн.
+        </p>
+        <div class="date-pill">01.02.2026 — бидний эхлэл</div>
+        <div class="scroll">доош гүйлгэ</div>
+      </div>
+    </section>
+
+    <section style="padding:50px 0 120px">
+      <h2 class="title">Бидний жижигхэн дурсамжууд.</h2>
+      <p class="lead">Одоохондоо зураг олон биш ч, энэ хоёр зураг хүртэл надад хангалттай их зүйл сануулдаг.</p>
+      <div class="memory-grid">
+        <article class="card">
+          <img src="assets/memory-1.jpg" alt="Бидний дурсамж 1">
+          <div class="caption"><b>Бид хоёр.</b><br>Хамт байсан энгийн мөч хүртэл онцгой санагддаг.</div>
+        </article>
+        <article class="card">
+          <img src="assets/memory-2.jpg" alt="Бидний дурсамж 2">
+          <div class="caption"><b>Чи минь.</b><br>Чиний хажууд байхдаа би хамгийн тайван байдаг.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="counter">
+      <div class="counter-box">
+        <div class="days" id="days">0</div>
+        <div class="days-label">өдөр — бидний эхэлсэн өдрөөс хойш ❤️</div>
+      </div>
+    </section>
+
+    <section class="letter">
+      <div class="letter-box">
+        <h2 class="title">Нандин-Эрдэнэд</h2>
+        <p>
+          Чамдаа энэ жижигхэн сайтыг хийлээ. Ямар нэгэн том зүйл биш байж магадгүй,
+          гэхдээ чамд зориулж өөрийн гараар хийсэн болохоор надад их үнэ цэнтэй.
+          <br><br>
+          Чамтай танилцсанаас хойш өдөр бүр арай өөр болсон. Чиний инээмсэглэл,
+          халамж, надтай ярьдаг тэр жижигхэн мөчүүд хүртэл надад нандин.
+          Би чамайг төгс хүн гэж хэлэхгүй — харин <b>миний хувьд онцгой хүн</b> гэж хэлнэ.
+          <br><br>
+          Цаашдаа бидэнд илүү олон зураг, илүү олон дурсамж, илүү олон
+          “бид хоёр” гэсэн мөчүүд нэмэгдээсэй.
+        </p>
+        <div class="signature">Үргэлж чинийх, Сумъяа ❤️</div>
+      </div>
+    </section>
+
+    <section class="secret-wrap">
+      <button class="secret" id="secretBtn">♡ Нууц мессежийг нээх</button>
+      <p class="hidden-note" id="secretNote">
+        Хэрвээ энэ сайтыг чи үзэж байгаа бол нэг л зүйл санаарай:
+        <b>би чамайг сонгосон, одоо ч сонгосоор байгаа.</b>
+        Өнөөдөр ч, маргааш ч, боломжтой бүх сайхан дурсамж дээрээ чамтай хамт баймаар байна. ❤️
+      </p>
+    </section>
+  </main>
+
+  <footer>Сумъяа <span>♥</span> Нандин-Эрдэнэ · 01.02.2026</footer>
+
+  <div class="player" id="player">
+    <button class="close-player" id="closePlayer">×</button>
+    <iframe id="youtube" allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen title="Until I Found You"></iframe>
+  </div>
+
+  <script>
+    // Relationship counter: 2026-02-01
+    const start = new Date("2026-02-01T00:00:00");
+    const now = new Date();
+    const days = Math.max(0, Math.floor((now - start) / 86400000));
+    document.getElementById("days").textContent = days;
+
+    // Floating hearts
+    function heart(){
+      const h=document.createElement("div");
+      h.className="heart";
+      h.textContent=["♥","♡","❤","✦"][Math.floor(Math.random()*4)];
+      h.style.left=Math.random()*100+"vw";
+      h.style.fontSize=(12+Math.random()*20)+"px";
+      h.style.animationDuration=(5+Math.random()*5)+"s";
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),11000);
+    }
+    setInterval(heart,650);
+
+    // Secret message
+    document.getElementById("secretBtn").onclick=()=>{
+      document.getElementById("secretNote").classList.toggle("show");
+    };
+
+    // YouTube music: Stephen Sanchez — Until I Found You
+    const musicBtn=document.getElementById("musicBtn");
+    const player=document.getElementById("player");
+    const youtube=document.getElementById("youtube");
+    musicBtn.onclick=()=>{
+      player.style.display="block";
+      youtube.src="https://www.youtube.com/embed/MlThQTo6D8A?autoplay=1&rel=0";
+      musicBtn.textContent="♫ Дуу тоглож байна";
+    };
+    document.getElementById("closePlayer").onclick=()=>{
+      player.style.display="none";
+      youtube.src="";
+      musicBtn.textContent="♪ Бидний дуу";
+    };
+  </script>
+</body>
+</html>
